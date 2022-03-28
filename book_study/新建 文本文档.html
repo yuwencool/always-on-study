@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>新文档</title>
+	</head>
+	<body>
+		<script>
+			console.log(typeof 2.14);
+			var x = 2;
+			console.log(x === null);
+			console.log(isNaN('a'));
+			console.log(isFinite('16'));
+			var d = new Date();
+			var years = d.getFullYear();
+			console.log(years);
+			document.write(d);
+			console.log(d);
+			var x1 = Symbol('a');
+			var x2 = Symbol('a');
+			console.log(x1 === x2);
+
+			//if ... else 语句
+			let n = Math.floor(Math.random()*100);
+			if (n >= 50) {
+				console.log(n + '大于等于50');
+			}
+			else {
+				console.log(n + '小于50');
+			}
+
+			//三目运算符
+			n >= 50 ? (
+				console.log(n + '大于等于50')
+			) : (
+				console.log(n + '小于50')
+			);
+
+			let fruit = ["草莓", "苹果", "香蕉"];
+			for(let x in fruit) {
+				console.log(fruit[x]);
+			}
+
+			for (let x of fruit) {
+				console.log(x);
+			}
+
+
+			fruit.forEach(element => {
+				console.log(element);
+			})
+
+			var w = 1
+			while (w < 10) {
+				console.log(w + "的平方是" + w * w);
+				w ++;
+			}
+			console.log("现在的值是" + w);
+
+			for (let a = 0; a < 10; a++) {
+				if (a == 3) {
+					console.log(a);
+					continue;
+				}
+				if (a == 8) {
+					console.log("这是最后的数字" + a);
+					break;
+				}
+				console.log("这是一个大众的数字" + a);
+			}
+
+			//这是关于try...catch...finally代码的例子
+			try {
+				let n = 45;
+				if (n >= 50){
+					console.log(a + "大于等于50") ;
+				}
+				else {
+					console.log(n + "n小于50");
+				}
+			}catch (e) {
+				console.log(e.name + ">" + e.message);
+				alert("程序出错误了！")
+			}
+
+			try {
+				let n = 65;
+				if (n >= 50) {
+					console.log(a + "大于等于50");
+				}
+			}catch (e) {
+				if (e instanceof TypeError) {
+					console.log("这是一个TypeError");
+				}
+				else if (e instanceof RangeError) {
+					console.log("这是一个RangeError");
+				}
+				else if (e instanceof ReferenceError) {
+					console.log("这是一个ReferenceError");
+				}
+				else {
+					console.log("这是一个SyntaxError");
+				}
+			}
+
+			console.log(typeof Math);
+			console.log(typeof Date);
+			console.log(Date.prototype);
+			console.log(Math);
+
+
+			// function jisuan(N, L) {
+			// 	this.N = N;
+			// 	this.L = L;
+			// 	for (let i = L; i < 500000000; i++) {
+			// 		for (let j = 2; j <= 100; j++){
+			// 			let ar = generate(i, j);
+			// 			let sum = ((i + (i+j-1))/2) * j;
+			// 			if (sum == N) {
+			// 				console.log(ar);
+			// 			}
+			// 		}
+
+			// 	}
+			// }
+			// function generate(start, Len) {
+			// 	return Array.from(new Array(Len).keys()),slice(start, start + Len - 1);
+			// }
+			// jisuan(18, 2);
+
+			//替换字符串
+			var s = "Do everything you want to do for you";
+			console.log(s.replace("you", "he"));
+			console.log(s.replace(/you/g, "he"));
+
+			//slice分割字符串
+			var str = 'Do you want to eat';
+			console.log(str.slice(5, 9));
+			console.log(str.substring(5, 0));
+			console.log(str.split(" ")[1]);
+
+			//转换大小写
+			var str = "  dO You someTHING wrong";
+			console.log(str.toUpperCase());
+			console.log(str.trimStart());
+
+			//模板字符串的使用
+			var html_str = `
+				<html>
+					<head>
+						这里是一个头部
+					</head>
+					<body>
+						这里是一个HTML语句
+					</body>
+				</html>
+			`
+			console.log(html_str);
+
+			//字符串中嵌入变量和表达式
+			var name = "cool boy";
+			var str = `Hi, my name is ${name}, and what is yours`;
+			var x = 10, y = 20;
+			var str1 = `x + y = ${x + y}`;
+			console.log(str); 
+			console.log(str1);
+
+			//模板字符串中的反引号
+			var str = `Hi my name is \`${name}\`, and what is yours`;
+			console.log(str);
+
+			//带标签的模板字符串
+			let age = 18;
+			function tag (strings, x, y) {
+				console.log(strings);
+				console.log(x);
+				console.log(y);
+				console.log(strings.raw[1]);
+			}
+			const sentence = tag`Hi, my name is ${name},\n what is your age, my age is ${age}`;
+
+			//可变参数
+			//使用rest参数
+			function intro (strings, ...args) {
+				console.log(strings);
+				console.log(args);
+			}
+			const sentence1 = intro`Hi, my name is ${name}, my age is ${age}, what is yours, ${age}?`;
+			//范例程序中的第二个参数为rest，这个特殊的“...args”语法中的“...”表示它是一个rest参数，arg则是这个rest参数的数组名。
+
+			//定义一个getDay()函数
+			function getDay (strings, ...args) {
+				console.log(strings);
+				let result = '';
+				let week = ["日", "一", "二", "三", "四", "五", "六"];
+				strings.forEach(function(key, i){
+					if (args[i]){
+						//当 s 未定义或未赋值时，结果为 false；
+						// 当 s 为字符串类型时，长度为 0 即 false，长度大于 0 即 true；
+						// 当 s 为数字类型时，等于 0 为 false，不等于 0 为 true。
+						let setTime = new Date(args[i]);
+						result += args[i] + "是星期" + week[setTime.getDay()] + "\n";
+					}
+				});
+				return result;
+			}
+			const a = "2019-8-1";
+			const b = "2019-9-1";
+			const c = "2019-10-1";
+			const sentence2 = getDay`${a}, ${b}, ${c}`;
+			console.log(sentence2);
+
+			//数值对象
+			var numObj = new Number("12345");
+			var num = Number("12345");
+			console.log(typeof numObj);
+			console.log(typeof num);
+
+			var max_val = Number.MAX_VALUE;
+			console.log(max_val);
+
+			//Number.EPSILON用于检测两个浮点数是否相等
+			console.log(Number.EPSILON);
+			function checkNumber (left, right) {
+				console.log(left + "===" + right + ">>" + (left === right));
+			}
+			function checkNumberWithEPSILON (left, right) {
+				console.log(left + "===" + right + ">>" + (Math.abs(left - right) < Number.EPSILON));
+			}
+			var val1 = 0.1 + 0.2, val2 = 0.3;
+			checkNumber(val1, val2);
+			checkNumberWithEPSILON(val1, val2);
+
+			//Number.prototype的方法
+			console.log((12345).toExponential(2));
+			console.log(typeof (10000).toString());
+			console.log((6400).toPrecision(3));
+			console.log(typeof (3.1415926).toFixed(2));
+			var numObj = new Number(10);
+			console.log(numObj.valueOf());
+			console.log(typeof numObj.valueOf());
+
+			var num = 123456.78;
+			console.log(num. toLocaleString('ar-EG'));
+			console.log(num.toLocaleString('zh', {style: 'decimal', currency: 'USD', useGrouping: true, maximumFractionDigits: 1}));
+			
+			//random()函数的用法
+			var x = 10, y = 20;
+			console.log(Math.random() * (y - x) +x);
+
+			//调用entries(), values(), filter()方法的程序
+			array1 = [10, 20, 30, 40, 50];
+			var iterator1 = array1.entries();
+			console.log(iterator1.next().value);
+			var iterator1 = array1.values();
+			console.log(iterator1.next().value);
+			var filtered = array1.filter(x => x >= 30);
+			console.log(filtered)
+
+			//reduce()的用法
+			var array1 = [1, 2, 3, 4];
+			//未定义初始值
+			var reduceArr = array1.reduce((acc, cur, idx, ary) => {
+				console.log(acc, cur);
+				return acc + cur;
+			});
+			console.log(reduceArr);
+			//定义初始值
+			var reduceArr = array1.reduce((acc, cur, idx, ary) => {
+				console.log(acc, cur);
+				return acc + cur;
+			}, 10);
+			console.log(reduceArr);
+
+			//关于Map对象的程序
+			var myMap = new Map();
+			myMap.set("姓名", "dog");
+			myMap.set("年龄", 18);
+			myMap.set("爱好", "打球");
+			myMap.forEach(function(key, value, map){
+				console.log(key, value);
+			})
+
+			//使用递归调用计算阶乘
+			var myFun = function factorial (n) {
+				let x = (n == 1 ? n : n * factorial(n - 1));
+				console.log(n + ">" + x);
+				return x;
+			}
+			myFun(5);
+
+			//闭包的应用
+			var account = function () {
+				var balance = 1000;
+				return {
+					deposite: function (d) {
+						balance += d;
+					},
+					withdrawals: function (w) {
+						balance -= w;
+					},
+					value: function() {
+						return balance;
+					}
+				}
+			}();
+			console.log(account.value());
+			account.deposite(500);
+			console.log(account.value());
+			account.withdrawals(500);
+			console.log(account.value());
+
+			//ES5的写法
+			function Person(name, age) {    //构造函数创建类
+				this.name = name;
+				this.age = age;
+			}
+			Person.prototype.showInfo = function() {
+				return '(' + this.name + ',' + this.age + ')';
+			}
+			var girl = new Person('J', 18);
+			console.log(girl);
+
+			//ES6的写法
+			class Person1{
+				constructor (name, age) {
+					this.name = name;
+					this.age = age;    
+				}
+				showInfo () {
+					return '(' + this.name + ',' + this.age + ')';
+				}
+			}
+			var girl = new Person1('J', 18);
+			console.log(girl.showInfo());
+
+			//自定义对象
+			var Cat = function (catName, catAge) {
+				this.name = catName;
+				this.age = catAge;
+				this.run = function () {
+					console.log(this.name + "猫跑了！");
+				}
+			}
+
+			//原型链
+			function person (username) {
+				this.username = username;
+				this.run = function() {
+					console.log(this.username + "正在跑");    
+				}
+			}
+			var myf1 = new person("J");
+			var myf2 = new person("M");
+			console.log(myf1);
+			//此时的run方法对于每一个创建的实例都是做相同的动作
+			//因此没有必要每次创建对象实例的时候都创建一次，可以更改如下：
+			function person1(username) {
+				this.username = username;
+			}
+			person1.prototype.run = function () {
+				console.log(this.username + "正在跑");
+			}
+			var myf3 = new person1("L");
+			console.log(myf3);
+			console.log(myf3._proto_ === person1.prototype);
+
+			//扩展实例
+			function person (username) {
+				this.username = username;
+			}
+			person.prototype.run = function () {
+				console.log(this.username + "我喜欢跑步");
+			}
+			function student (username, calssname) {
+				person.call(this, username);//因为借用的构造函数有参数，所以要传参进去；
+				this.calssname = calssname;
+			}
+			student.prototype = Object.create(person.prototype);
+			student.prototype.study = function() {
+				console.log(this.calssname + "的" + this.username + "正在用功读书");
+			}
+			var myPerson = new person("J");
+			var myStudent = new student("M", "二年级三班");
+			myPerson.run();
+			myStudent.run();
+			myStudent.study();
+
+			//累加求和
+			var sum = 0;
+			for (let i = 1; i <= 34; i++) {
+				sum = sum + i;
+			}
+			console.log(sum);
+
+			//正则表达式
+			var reg = /you/;
+			var target = "you are cool";
+			console.log(target.search(reg));
+
+			var target = "18, 2150, 310\n, Tuesday, Sunday";
+			var reg1 = /day$/g;
+			console.log(target.match(reg1));
+			console.log(reg1.exec(target));
+			var bnhnj;
+			console.log(bnhnj);
+
+			//常用的正则表达式
+			//检查公历的日期
+			reg = /^\d{4}\/\d{1,2}\/\d{1,2}$/;
+			/*密码核对
+			要求：
+			1. 长度6-10
+			2. 第一个字符为英文字母
+			3. 之后英文字母、数字、减号与下划线均可
+			*/
+			reg = /^[a-zA-Z][\w-]{5,9}$/;
+			/* 只允许中文
+			对比Unicode编码 */
+			reg = /^[\u4e00-\u9fff]{0,}$/
+			/* E-mail核对
+			1. 允许大写英文字母、小写英文字母、0-9、减号与下划线
+			2. 中间有一个@
+			3. @后面允许小写英文字母、0-9、下划线
+			4. 结尾有两个以上英文字母 */
+			reg = /^[\w-][\w-]{0,}@[a-z0-9]*\.[a-z0-9]*\.[a-z]{2,}$/;
+			console.log(reg.test("yuwen@cug.edu.cn"));
+		</script>
+	</body>
+</html>

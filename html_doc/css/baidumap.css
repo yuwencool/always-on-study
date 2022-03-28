@@ -1,0 +1,22 @@
+#maplocation{
+    /* 宽度100% */
+    width: 100%;
+    /* 无边界，自动调整 */
+    margin: 0 auto;
+    /* 相对位置 */
+    height: 640px;
+    overflow: hidden;
+}
+#searchResultPanel{
+    border:1px solid #C0C0C0;width:150px;height:auto; display:none;
+}
+#tex_a,tex_b{
+    width:150px;
+}
+body{
+    text-align: center;
+}
+#container{
+    text-align: center;
+    width: 100%;
+}

@@ -1,0 +1,28 @@
+body{
+    text-align: center;
+}
+table,tr,th,td{
+    border: 1px solid #000;
+}
+thead{
+    color: brown;
+}
+tbody{
+    color: blue;
+}
+tfoot{
+    color:green;
+}
+caption{
+    border: grey solid 1px;
+    background-color: #287;
+    color: honeydew;
+}
+table{
+    margin: auto;
+}
+nav{
+    font-size: 25px;
+    font-weight: 500px;
+    border: dashed 1px;
+}

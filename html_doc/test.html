@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- 添加Bootstrap相关链接 -->
+     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <script>
+        function myfunction(){
+            alert("我是你爹")
+        }
+        function myfunction1(){
+            //获取ID名为x的输入框的值
+            var x=document.getElementById("x").value;
+            //计算x+1，nuber将x转化为对应的数值
+            var y=Number(x)+1;
+            alert('y='+y);
+        }
+    </script>
+    <script type="text/javascript" src="js/test.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/myfirst.css">
+    <!-- echarts在线文件引入-->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.1/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+            <!-- Main component for a primary marketing message or call to action -->
+            <div class="container-fluid">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav nav-pills navjustified">
+                        <li><a href="myfirst.html">首页</a></li>
+                        <li><a href="Mytable.html">春暖花开</a></li>
+                        <li><a href="Mytable.html">时间表</a></li>
+                        <li><a href="baidumap.html">百度地图API</a></li>
+                        <li><a href="https://getboootstrap.com/" target="_blank">bootstrap</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <button onclick="myfunction()">点我我就崇拜你</button>
+    <p>输入x，计算y=x+1,并显示结果。</p>
+    <input type="number" id="x" min="1" max="500000">
+    <button onclick="myfunction1()">第二个可以点的</button>
+    <article>
+        <p id="computeDemo">
+            请输入数字：<input type="number" id="txt_a" value=""/>
+            <!-- 描述下拉列表的选项 -->
+            <select id="computeType" name="选择运算符">
+                <option value="add">+</option>
+                <option value="minus">-</option>
+                <option value="multiply">*</option>
+                <option value="divide">/</option>
+            </select>
+            <!-- 文本控制的例子 -->
+            <input type="number" id="txt_b" value=""/>=
+            <input type="number" id="txt_c" value=""/>
+            <!-- 按钮控件例子 -->
+            <input type="button" id="btn_compute" value="点我进行计算" onclick="compute()"/>
+            <input type="button" id="btn_loadEcharts" value="加载柱状图" onclick="loadEcharts()"/>
+        </p>
+        <p id="echartsTest">
+
+        </p>
+    </article>
+</body>
+</html>
