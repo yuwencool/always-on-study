@@ -426,6 +426,59 @@
 			4. 结尾有两个以上英文字母 */
 			reg = /^[\w-][\w-]{0,}@[a-z0-9]*\.[a-z0-9]*\.[a-z]{2,}$/;
 			console.log(reg.test("yuwen@cug.edu.cn"));
+
+			//异步流程控制
+
+			//callback回调函数工作说明
+			function func (x, y, callback) {
+				let num = x * y;
+				callback(num);
+			}
+			func(10, 20, function (num) {
+				console.log("num = ", num);
+			});
+			//匿名函数在func函数执行完成后才调用并传入参数num，程序就可以按预期的顺序进行
+
+			//事件循环
+			console.log("程序开始了");
+			function play1 () {
+				setTimeout (function () {
+					console.log('play1执行了');
+				}, 5000)
+			}
+			function play2 () {
+				setTimeout (function () {
+					console.log('play2执行了');
+				}, 5000)
+			}
+			console.log("程序结束了！");
+			play1();
+			play2();
+			//这样的代码并不会按照预期的方式运行
+
+			//使用Callback回调函数进行改写
+			function play1 (callback) {
+				setTimeout (function () {
+					console.log('play1执行了');
+					callback("play1ok");
+				}, 5000);
+			}
+			function play2 (callback) {
+				setTimeout (function (callback) {
+				console.log('play2执行了');
+				callback("paly2ok");
+				}, 5000);
+			}
+			console.log("程序开始了");
+			play1(function (e) {
+				if (e === "play1ok") {
+					play2(function () {
+						if (e1 === "play2ok") {
+							console.log("程序结束了");
+						} 
+					});
+				}
+			});
 		</script>
 	</body>
 </html>
