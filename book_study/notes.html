@@ -511,10 +511,38 @@
 				});
 			}
 			async function add (x) {
-				let playvalue = await func (10);
+				let playvalue = await func (10); //等待调用函数的返回值
 				console.log("x + playvalue = ", x + playvalue);
 			}
 			add(5);
+
+			//使用async/await来改写前面的Promise链
+			function func1 (n) {
+				return new Promise ((resolve, reject) => {
+					setTimeout(function () {
+						console.log("func1 = ", n * n);
+						resolve (n * n);
+					}, 3000);
+				})
+			}
+			function func2 (n) {
+				return new Promise ((resolve, reject) => {
+					setTimeout(function () {
+						console.log("func2 = ", n + n);
+						resolve (n + n);
+					}, 5000);
+				})
+			}
+			async function algorithm (x) {
+				try {
+					let func1value = await func1(5);
+					let func2value = await func2(func1value);
+					console.log("x + func1value + func2value = ", x + func1value + func2value);
+				} catch (e) {
+					console.log(e);
+				}
+			}
+			algorithm(10);
 
 		</script>
 	</body>
