@@ -78,3 +78,48 @@ function selectionSort (arr) {
     }
     return arr;
 }
+
+/*
+算法名称：希尔排序，也称为递减增量（步长）排序算法
+算法思路：
+1. 先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序
+2. 待整个序列中的记录基本有序之后，再对全体记录进行依次直接插入排序
+*/
+function shellSort (arr)  {
+    var len = arr.length;
+    var gap = 1; //给步长一个初始值
+    while (gap < (len / 3)) {
+        gap = gap * 3 + 1;
+    }//这里将步长设置为序列长度的1/3，这个值的设定并不固定，也可以使用1/2
+    for (gap; gap > 0; Math.floor(gap / 3)) {
+        for (var i = gap; i < len; i++) {
+            var temp = arr[i];
+            for (var j = i - gap; j >= 0 && arr[j] > temp; j -= gap) {
+                arr[j + gap] = arr[j];
+            }
+            arr[j + gap] = temp;
+        }
+    }
+    return arr;
+}
+
+/*
+算法名称：插入排序
+算法思路：
+1. 将待排序序列的第一个元素作为有序序列，把第二个元素到最后一个元素作为未排序序列
+2. 从头到尾依次扫描未排序序列，将扫描到的每一个元素插入有序序列的适当位置
+*/
+function insertionSort (arr) {
+    var len = arr.length;
+    var preIndex, current;
+    for (var i = 1; i < len; i++) {
+        current = arr[i];
+        preIndex = i - 1;
+        while (preIndex <= 0 && arr[preIndex] > current) {
+            arr[preIndex + 1] = arr[preIndex];
+            preIndex--;
+        }
+        arr[preIndex + 1] = current;
+    }
+    return arr;
+}
