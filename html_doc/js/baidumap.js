@@ -429,7 +429,7 @@ function loadlushu(){
 function MarioRun(){
     var myP1= new BMap.Point(114,30);//起点
     var myP2= new BMap.Point(116,39);//终点
-    var myIcon= new BMap.Icon('https://img.puchedu.cn/uploads/0/26/1216953163/2684240445.jpg',new BMap.Size(200,400),{
+    var myIcon= new BMap.Icon('https://img.puchedu.cn/uploads/0/26/1216953163/2684240445.jpg',new BMap.Size(50,100),{
         imageOffset:new BMap.Size(0,0)//图片的偏移量，为了是图片底部中心对准坐标点。
     });
     var driving2 = new BMap.DrivingRoute(map,{renderOptions:{map:map,autoViewport:true}});//驾车实例
