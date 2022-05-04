@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>VUE</title>
+    </head>
+    <body>
+        <!-- 根元素 -->
+        <div id="app">
+            <!-- 将msg绑定到p元素 -->
+            <p>{{msg}}</p>
+            <!-- 插入msg数据 -->
+            <!-- @click用于绑定单击事件 -->
+            <button @click="sendMessage">切换信息</button>
+            <button @click="count == 0 ? 0 : count--">-</button>
+            <button @click="count++">+</button>
+            总费用为：{{paymoney}}
+            <!-- 使用v-model在表单控件上创建双向数据绑定 -->
+            <input type="text" v-model="myNumber">
+            <!-- 在插值表达式中使用过滤器的用法 -->
+            <p>这是原文：{{msg}}</p>
+            <!-- 这里使用的是管道符，管道符之前代码执行的结果会作为参数传给后面 -->
+            <p>消息过滤：{{msg | change}}</p>
+            <!-- 在v-bind属性绑定中使用过滤器，其中v-bind:id="dataId"表示绑定id属性，值为dataId-->
+            <p v-bind:id="dataId | formatId">在v-bind属性绑定中使用过滤器</p>
+        </div>
+        <!-- 引入vue.js核心文件 -->
+        <script type="text/javascript" src="./vue.js"></script>
+        <script>
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    msg: 'vuedescription',
+                    price: 10,
+                    count: 2,
+                    myNumber: 1,
+                    dataId: 'abcdefg'
+                },
+                methods: {
+                    // 定义一个事件响应函数
+                    sendMessage () {
+                        this.msg = "hahhaha"
+                    }
+                },
+                computed: {
+                    paymoney () {
+                        return this.price * this.count
+                    }
+                },
+                //因为watch监听的是data的数据变化，因此watch的方法名必须与data的属性名一致，如果需要在数据变化的同时进行异步操作，或者计算开销比较大时，建议使用状态监听进行处理
+                watch: {
+                    myNumber (newNumber, oldNumber) {
+                        console.log('新数字为：' + newNumber, '旧数字为：' + oldNumber)
+                    }
+                },
+                //过滤器函数必须定义第一个参数，该参数是使用过滤器的参数
+                filters: {
+                    change (value) {
+                        return value ? value.toUpperCase() : ''
+                    },
+                    formatId (value) {
+                        return value ? value.charAt(2) + value.indexOf('f') : ''
+                    }
+                }
+            })
+            console.log(vm.$data.msg)
+        </script>
+    </body>
+</html>
