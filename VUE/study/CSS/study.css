@@ -1,0 +1,13 @@
+* {
+    text-align: center;
+    align-content: center;
+}
+.box {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background-color: yellow;
+    padding: 20px;
+    width: 200px;
+    height: 100px;
+}
