@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>VUE</title>
+        <link type="text/css" rel="stylesheet" href="./CSS/study.css">
     </head>
     <body>
         <!-- 根元素 -->
@@ -24,47 +25,24 @@
             <p>消息过滤：{{msg | change}}</p>
             <!-- 在v-bind属性绑定中使用过滤器，其中v-bind:id="dataId"表示绑定id属性，值为dataId-->
             <p v-bind:id="dataId | formatId">在v-bind属性绑定中使用过滤器</p>
+            <div v-bind:class="{box: isShow}">
+                绑定样式类
+            </div>
+            <h9></h9>
+            <h10></h10>
         </div>
+        <div id="software">
+            <h8></h8>
+            <h8></h8>
+            <comp></comp>
+            <h11 name="学习无止境"></h11>
+        </div>
+        <!-- 通过Vue提供的tempalte标签来定义结构的模板，这样开发体验更好，开发效率更高 -->
+        <template id="temp1">
+            <p>组件内的user是{{uname}}</p>
+        </template>
         <!-- 引入vue.js核心文件 -->
         <script type="text/javascript" src="./vue.js"></script>
-        <script>
-            var vm = new Vue({
-                el: '#app',
-                data: {
-                    msg: 'vuedescription',
-                    price: 10,
-                    count: 2,
-                    myNumber: 1,
-                    dataId: 'abcdefg'
-                },
-                methods: {
-                    // 定义一个事件响应函数
-                    sendMessage () {
-                        this.msg = "hahhaha"
-                    }
-                },
-                computed: {
-                    paymoney () {
-                        return this.price * this.count
-                    }
-                },
-                //因为watch监听的是data的数据变化，因此watch的方法名必须与data的属性名一致，如果需要在数据变化的同时进行异步操作，或者计算开销比较大时，建议使用状态监听进行处理
-                watch: {
-                    myNumber (newNumber, oldNumber) {
-                        console.log('新数字为：' + newNumber, '旧数字为：' + oldNumber)
-                    }
-                },
-                //过滤器函数必须定义第一个参数，该参数是使用过滤器的参数
-                filters: {
-                    change (value) {
-                        return value ? value.toUpperCase() : ''
-                    },
-                    formatId (value) {
-                        return value ? value.charAt(2) + value.indexOf('f') : ''
-                    }
-                }
-            })
-            console.log(vm.$data.msg)
-        </script>
+        <script type="text/javascript" src="./JavaScript/study.js"></script>
     </body>
 </html>
