@@ -5,23 +5,23 @@ body{
 				text-align:center;
 				color:DodgerBlue;
 	}
-	header{
-			height:600px;
-			/* background:url(http://5b0988e595225.cdn.sohucs.com/images/20171130/a8984a6b68934610b475db14028a1703.bmp) no-repeat; */
-			}
-	nav{
-		font-size: 25px;
-		font-weight: 500px;
-		border: dashed 1px;
+header{
+		height:600px;
+		/* background:url(http://5b0988e595225.cdn.sohucs.com/images/20171130/a8984a6b68934610b475db14028a1703.bmp) no-repeat; */
 		}
-	#p1,#p2{
-			text-align:center;
-			font-family:Times new Roman;
-			}
-	#navbar{
-		font-size: large;
-		font-family: 'book antiqua';
+nav{
+	font-size: 25px;
+	font-weight: 500px;
+	border: dashed 1px;
 	}
-	#a1{
-		max-width: 100%;
-	}
+#p1,#p2{
+		text-align:center;
+		font-family:Times new Roman;
+		}
+#navbar{
+	font-size: large;
+	font-family: 'book antiqua';
+}
+#a1{
+	max-width: 100%;
+}
