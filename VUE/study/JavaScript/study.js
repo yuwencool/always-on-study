@@ -19,6 +19,50 @@ Vue.component ('h11', {
     props: ['name'],
     template: '<div>名字是{{name}}</div>'
 })
+
+//定义一个父组件用于测试$emit的作用
+Vue.component ('com-father', {
+    //在这里设置一个自定义事件，接收子组件传过来的数据
+    template: '<div><com-son @init-act="convert"></com-son>这里是子组件传过来的信息：{{message}}</div>',
+    data () {
+        return {
+            message: ''
+        }
+    },
+    methods: {
+        //该参数用于接收子组件传递过来的值
+        convert (value) {
+            this.message = value
+        }
+    }
+})
+//定义一个子组件用于测试$emit向父组件传递数据
+Vue.component ('com-son', {
+    template: '#temp2',
+    data () {
+        return {
+            message: '我是子组件的信息'
+        }
+    },
+    methods: {
+        //基于$emit设定一个方法用于触发父组件的自定义事件
+        act () {
+            //指定使用$emit触发的事件，并传递参数
+            this.$emit('init-act', this.message)
+        }
+    }
+})
+Vue.component ('school', {
+    template: '<div>这是学校</div>',
+    data () {
+        return {
+
+        }
+    }
+})
+Vue.component ('dorm', {
+    template: '<div>这是宿舍</div>'
+})
 var vm = new Vue({
     el: '#app',
     data: {
@@ -68,6 +112,9 @@ var vm = new Vue({
     }
 })
 
-var viewmodel = new Vue({el: '#software'})
+var viewmodel = new Vue({
+    el: '#software',
+    data: {comName: 'school'}
+})
 
 console.log(vm.$data.msg)
