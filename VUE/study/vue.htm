@@ -36,10 +36,25 @@
             <h8></h8>
             <comp></comp>
             <h11 name="学习无止境"></h11>
+            <!-- 使用自定义的父组件 -->
+            <com-father></com-father>
+            <!-- 使用component标签实现组件切换，组件切换还可以使用v-if完成 -->
+            <h3>学校和宿舍切换处</h3>
+            <a href="#" @click.prevent="comName='school'">学校</a>
+            <a href="#" @click.prevent="comName='dorm'">宿舍</a>
+            <component :is="comName"></component>
         </div>
         <!-- 通过Vue提供的tempalte标签来定义结构的模板，这样开发体验更好，开发效率更高 -->
         <template id="temp1">
             <p>组件内的user是{{uname}}</p>
+        </template>
+        <!-- 子组件模块用于测试子组件通过$emit向父组件传递数据 ,$emit可以触发父组件的事件，数据通过参数进行传递-->
+        <template id="temp2">
+            <div>
+                子组件中的信息：
+                <textarea rows="1">{{message}}</textarea>
+                <button @click="act">emit</button>
+            </div>
         </template>
         <!-- 引入vue.js核心文件 -->
         <script type="text/javascript" src="./vue.js"></script>
