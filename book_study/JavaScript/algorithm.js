@@ -123,3 +123,70 @@ function insertionSort (arr) {
     }
     return arr;
 }
+
+
+
+/*
+题目：数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+注意：你可以假设数组是非空的，并且给定的数组总是存在多数元素
+*/
+
+// 我的思路
+/*
+ @param {number[]} nums
+ @return {number}
+*/
+var majorityElement = function(nums) {
+    var num_set = new Set(nums)
+    var number_arr = [];
+    num_set.forEach(value => {
+        var temp_cal = 0;
+        nums.filter(function(currentValue) {
+            if (currentValue === value) {
+                temp_cal++;
+            }
+        })
+        number_arr.push(temp_cal);
+    })
+    var max_value = maxNumber(number_arr);
+    var max_id = number_arr.indexOf(max_value);
+    return [...num_set][max_id];
+}
+function maxNumber (arr) {
+    let result = -Infinity;
+    arr.forEach(items => {
+        if (items > result) {
+            result = items;
+        }
+    });
+    return result;
+}
+
+/*
+给定一个二叉树的根节点 root ，返回 它的 中序 遍历 
+*/
+/*
+ * Definition for a binary tree node.
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
+ * }
+ */
+/*
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
+var inorderTraversal = function(root) {
+    const temp_arr = [];
+    const inorder = root => {
+        if (!root) {
+            return;
+        }
+        inorder(root.left);
+        temp_arr.push(root.val);
+        inorder(root.right);
+    }
+    inorder(root);
+    return temp_arr;
+};
