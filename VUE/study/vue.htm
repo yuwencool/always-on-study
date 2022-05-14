@@ -30,8 +30,10 @@
             </div>
             <h9></h9>
             <h10></h10>
+            用户名：<input type="text" v-myaction="true">
         </div>
         <div id="software">
+            用户名：{{uname}}
             <h8></h8>
             <h8></h8>
             <comp></comp>
@@ -44,6 +46,7 @@
             <a href="#" @click.prevent="comName='dorm'">宿舍</a>
             <component :is="comName"></component>
         </div>
+        <div id="app1" v-my-directive></div>
         <!-- 通过Vue提供的tempalte标签来定义结构的模板，这样开发体验更好，开发效率更高 -->
         <template id="temp1">
             <p>组件内的user是{{uname}}</p>
