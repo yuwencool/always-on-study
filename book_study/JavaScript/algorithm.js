@@ -1,4 +1,5 @@
 /*
+第一题：
 算法名称：快速排序算法
 算法思路：
 1. 先随机找到一个基准点
@@ -58,6 +59,7 @@ function swap (arr, i, j) {
 }
 
 /*
+第二题：
 算法名称：选择排序
 算法思路：
 1. 首先从数组中识别出最大或者最小的数，放在排序数组的首要位置
@@ -80,6 +82,7 @@ function selectionSort (arr) {
 }
 
 /*
+第三题：
 算法名称：希尔排序，也称为递减增量（步长）排序算法
 算法思路：
 1. 先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序
@@ -104,6 +107,7 @@ function shellSort (arr)  {
 }
 
 /*
+第四题：
 算法名称：插入排序
 算法思路：
 1. 将待排序序列的第一个元素作为有序序列，把第二个元素到最后一个元素作为未排序序列
@@ -127,6 +131,7 @@ function insertionSort (arr) {
 
 
 /*
+第五题：
 题目：数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
 注意：你可以假设数组是非空的，并且给定的数组总是存在多数元素
 */
@@ -163,6 +168,7 @@ function maxNumber (arr) {
 }
 
 /*
+第六题：
 给定一个二叉树的根节点 root ，返回 它的 中序 遍历 
 */
 /*
@@ -189,4 +195,51 @@ var inorderTraversal = function(root) {
     }
     inorder(root);
     return temp_arr;
+};
+
+/**
+ * 第七题：字符串相加
+ * 给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和并同样以字符串形式返回。
+ * 你不能使用任何內建的用于处理大整数的库（比如 BigInteger）， 也不能直接将输入的字符串转换为整数形式。
+ */
+var addStrings = function(num1, num2) {
+    let i = num1.length - 1;
+    let j = num2.length - 1;
+    let add = 0;
+    const res = [];
+    while (i >= 0 || j >= 0 || add != 0) {
+        let n1 = i >= 0 ? num1.charAt(i) - 0 : 0;
+        let n2 = j >= 0 ? num2.charAt(j) - 0 : 0;
+        const result = n1 + n2 + add;
+        res.push(result % 10);
+        add = Math.floor(result / 10);
+        i -= 1;
+        j -= 1;
+    }
+    return res.reverse().join("");
+};
+
+/**
+ * 第八题：
+ * 爬楼梯
+ * 假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+ * 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+ * 解题思路：
+ * 1. 最后一步可能走了一步，也可能走了两步，所以可以分为两种情况。
+ * 2. 最终的方案数等于以上两种情况下的方案数之和
+ * 3. 求出总台阶数为1和2两种情况下的方案数，此后依次累加就可以。
+ */
+var climbStairs = function(n) {
+    let p = 2, q = 3, r;
+    if (n <= 3) {
+        return n;
+    }
+    else {
+        for (let i = 4; i <= n; i++) {
+            r = p + q;
+            p = q;
+            q = r;
+        }
+    }
+    return r;
 };
