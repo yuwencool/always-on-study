@@ -99,7 +99,7 @@ var vm = new Vue({
         msg: 'vuedescription',
         price: 10,
         count: 2,
-        myNumber: 1,
+        myNumber: 5,
         dataId: 'abcdefg',
 
         //用于定义样式类是否生效
@@ -110,6 +110,13 @@ var vm = new Vue({
         // 定义一个事件响应函数
         sendMessage () {
             this.msg = "hahhaha"
+        },
+        showchild () {
+            console.log(this.$children)
+        },
+        showroot () {
+            console.log(this.$root);
+            console.log(this.$root === this);
         }
     },
     computed: {
@@ -146,7 +153,8 @@ var viewmodel = new Vue({
     el: '#software',
     data: {
         comName: 'school',
-        uname: '学习者'
+        uname: '学习者',
+        name: {}
     },
     /*钩子函数过程：创建实例->页面挂载->组件更新->实例销毁（VUE生命周期）
     创建实例之前：不可以使用数据
@@ -185,5 +193,8 @@ var viewmodel = new Vue({
         
     }
 })
+//用于向响应式属性中添加一个属性，并确保这个新属性同样是响应式的，且触发试图更新
+//需要注意的是Vue不允许添加根级响应式属性，必须预先在data中声明所有根级响应式属性。
+Vue.set(viewmodel.name, 'pet_name', 'tom');
 
 console.log(vm.$data.msg)

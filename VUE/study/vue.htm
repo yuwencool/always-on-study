@@ -9,6 +9,8 @@
     <body>
         <!-- 根元素 -->
         <div id="app">
+            <button @click="showchild">点击查看子组件</button>
+            <button @click="showroot" id="btn_test">点击查看根VUE实例</button>
             <!-- 将msg绑定到p元素 -->
             <p>{{msg}}</p>
             <!-- 插入msg数据 -->
@@ -45,6 +47,7 @@
             <a href="#" @click.prevent="comName='school'">学校</a>
             <a href="#" @click.prevent="comName='dorm'">宿舍</a>
             <component :is="comName"></component>
+            <div>宠物名：{{name.pet_name}}</div>
         </div>
         <div id="app1" v-my-directive></div>
         <!-- 通过Vue提供的tempalte标签来定义结构的模板，这样开发体验更好，开发效率更高 -->
