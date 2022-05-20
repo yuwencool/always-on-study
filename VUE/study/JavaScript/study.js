@@ -16,8 +16,8 @@ Vue.component ('h8', {
 })
 Vue.component ('h11', {
     //props用于父组件向子组件传递数据
-    props: ['name'],
-    template: '<div>名字是{{name}}</div>'
+    props: ['name', 'age'],
+    template: '<div>名字是{{name}}，年龄是{{age}}</div>'
 })
 
 //定义一个父组件用于测试$emit的作用
