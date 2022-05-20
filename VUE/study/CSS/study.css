@@ -4,10 +4,13 @@
 }
 .box {
     display: flex;
-    justify-content: center;
     margin: auto;
+    line-height: 100px;
     background-color: yellow;
     padding: 20px;
-    width: 200px;
+    width: 300px;
     height: 100px;
+}
+#app {
+    text-align: center;
 }
