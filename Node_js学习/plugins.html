@@ -1,0 +1,56 @@
+<!-- 此处代码涉及Plugins的使用，两个API：模块的注册，以及状态的替换 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plugins测试</title>
+    <!-- 这里需要引入Vuex和Vue -->
+    <!-- 需要注意的是：实例化Vue要在实例化Vuex的后面进行 -->
+    <script src=""></script>
+</head>
+<body>
+    <div class="app">
+        商品名称：{{this.$store.}}
+    </div>
+    <script>
+        //插件本身是函数，接收store对象作为参数
+        const myPlugins = store => {
+            //传入两个参数，该函数在store实例初始化完成后调用
+            store.subscribe(mutation, state) {
+                console.log('2-----执行subscribe方法');
+                console.log(mutation.type, mutation.payload);
+            }
+        }
+        const store = new Vuex.Store({
+            state: {goodsName: '联想笔记本', done: true},
+            mutations: {
+                showGoodsName (state) {
+                    console.log('1....执行....showGoodsName方法：' + state.goodsName);
+                }
+            },
+            //在store实例中使用myPlugin插件
+            plugins: [myPlugins]
+        })
+
+        //下面的两个API包括“模块的注册”和“状态的替换”，执行完成之后，可以改变store中声明的模块和状态
+        store.commit('showGoodsName', 'plugin');
+        //这里说明了动态创建模块的接口
+        //第一个参数是模块名称，第二个参数是配置对象
+        store.registerModule('myModule', {
+            state: {
+                name: '大神1号'
+            }
+        });
+        //另外，如果已经创建的模块不再使用，可以通过store.unregisterModule(moduleName)来动态卸载模块，但不能使用此方法卸载创建store时声明的模块（也叫静态模块）
+
+        //下面这个API用于状态替换
+        store.replaceState({done: false});
+        new Vue({
+            el: "#app",
+            store
+        })
+    </script>
+</body>
+</html>
