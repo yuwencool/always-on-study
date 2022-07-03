@@ -1,0 +1,36 @@
+<!-- 在store实例中定义模块对象 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modules测试</title>
+    <!-- 这里需要引入Vuex和Vue -->
+    <!-- 需要注意的是：实例化Vue要在实例化Vuex的后面进行 -->
+    <script src=""></script>
+</head>
+<body>
+    <div id="app">
+        <p>在手机端选购的商品：{{this.$store.state.goodsName}}</p>
+    </div>
+    <script>
+        const modules1 = {
+            state: {goodsName: '联想拯救者'},
+        }
+        const modules2 = {
+            state: {goodsName: 'ThinkPad系列'}
+        }
+        const store = new Vuex.Store({
+            modules: {
+                mod1: modules1,
+                mod2: modules2
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            store,
+        })
+    </script>
+</body>
+</html>
