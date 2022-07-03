@@ -42,7 +42,7 @@
             }),
             methods: {
                 decrease (state) {
-                    this.$store.commit('decrease') //用于提交mutations中的方法
+                    this.$store.commit('decrease') //commit用于提交mutations中的方法，此外dispatch主要处理actions的异步事件回调函数
                 }
             },
         })
