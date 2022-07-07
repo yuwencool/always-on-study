@@ -1,25 +1,34 @@
 <template>
   <div id="app">
-    <!-- <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/> -->
+    <user-header :addobj="addobj"/>
+    <user-list :todos="todos"/>
+    <user-footer/>
   </div>
 </template>
 
 <script>
-import UserHeader from '@/components/UserHeader'
-import UserList from '@/components/UserList'
-import UserFooter from '@/components/UserFooter'
-import UserItem from '@/components/UserItem'
+import UserList from './components/UserList.vue'
+import UserFooter from './components/UserFooter.vue'
+import UserHeader from './components/UserHeader.vue'
 export default {
   name: 'App',
+  data() {
+    return {
+      todos: [
+        {id: '001', todo: '吃饭', completed: true},
+        {id: '002', todo: '睡觉', completed: true},
+      ]
+    }
+  },
   components: {
     UserHeader,
     UserList,
     UserFooter,
-    UserItem
+  },
+  methods: {
+    addobj(x) {
+      this.todos.unshift(x);
+    }
   }
 }
 </script>
