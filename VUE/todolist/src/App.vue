@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <user-header :addobj="addobj"/>
-    <user-list :todos="todos"/>
+    <user-list :todos="todos" :checktodos="checktodos"/>
     <user-footer/>
   </div>
 </template>
@@ -28,6 +28,13 @@ export default {
   methods: {
     addobj(x) {
       this.todos.unshift(x);
+    },
+    checktodos(id) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+      })
     }
   }
 }
