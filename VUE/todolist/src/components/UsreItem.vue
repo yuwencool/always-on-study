@@ -6,9 +6,10 @@
       :checked="todoobj.completed"
       @change="checktodo(todoobj.id)"
     />
-    <span>{{todoobj.todo}}</span>
+    <p>{{todoobj.todo}}</p>
     <button>删除</button>
   </li>
+
 </template>
 
 <script>
@@ -24,5 +25,31 @@
 </script>
 
 <style>
-
+    li {
+        width: 50%;
+        height: 30px;
+        /* margin-top: 10px; */
+        list-style: none;
+    }
+    li:before {
+      display: inline-block;
+      content: '';
+      height: 100%;
+      vertical-align: middle;
+    }
+    li:hover {
+        background-color: gray;
+    }
+    li p {
+      width: 50px;
+      height: 80%;
+    }
+    li button {
+      margin-top: 1%;
+      float: right;
+      display: none;
+    }
+    li:hover button {
+      display: block;
+    }
 </style>
