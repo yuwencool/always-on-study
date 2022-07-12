@@ -5,6 +5,7 @@
             :key="item.id" 
             :todoobj="item" 
             :checktodos="checktodos"
+            :deletetodo="deletetodo"
         />
     </ul>
 </template>
@@ -13,7 +14,7 @@
     import UserItem from './UsreItem.vue'
     export default {
         name: 'UserList',
-        props: ['todos', 'checktodos'],
+        props: ['todos', 'checktodos', 'deletetodo'],
         components: {
             UserItem,
         },
@@ -23,6 +24,8 @@
     }
 </script>
 
-<style>
-
+<style scoped>
+    ul {
+        padding-left: 0%;
+    }
 </style>

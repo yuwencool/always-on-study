@@ -7,7 +7,7 @@
       @change="checktodo(todoobj.id)"
     />
     <p>{{todoobj.todo}}</p>
-    <button>删除</button>
+    <button class="btn btn-danger" @click="deleteItem(todoobj.id)">删除</button>
   </li>
 
 </template>
@@ -15,38 +15,41 @@
 <script>
     export default {
         name: 'UserItem',
-        props: ['todoobj', 'checktodos'],
+        props: ['todoobj', 'checktodos', 'deletetodo'],
         methods: {
           checktodo(id) {
             this.checktodos(id);
+          },
+          deleteItem(id) {
+            if(confirm('是否确认删除')) {
+              this.deletetodo(id);
+            }
           }
-        }
+        } 
     }
 </script>
 
-<style>
+<style scoped>
     li {
-        width: 50%;
-        height: 30px;
-        /* margin-top: 10px; */
-        list-style: none;
-    }
-    li:before {
-      display: inline-block;
-      content: '';
-      height: 100%;
-      vertical-align: middle;
+      display: flex;
+      width: 20%;
+      height: 30px;
+      /* margin-top: 10px; */
+      list-style: none;
+      align-items: center;
     }
     li:hover {
         background-color: gray;
     }
     li p {
-      width: 50px;
-      height: 80%;
+      height: 60%;
     }
     li button {
-      margin-top: 1%;
-      float: right;
+      position: absolute;
+      left: 15%;
+      background-color: red;
+      border: none;
+      color: white;
       display: none;
     }
     li:hover button {

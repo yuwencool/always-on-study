@@ -1,5 +1,11 @@
 <template>
-  <input type="text" placeholder="请输入要做的事情" @keyup.enter="add" v-model="title">
+  <input 
+    type="text" 
+    placeholder="请输入要做的事情" 
+    @keyup.enter="add" 
+    v-model="title"
+    ref="info"
+  >
 </template>
 
 <script>
@@ -17,6 +23,7 @@
                 if (!this.title) return alert("不要输入空值！")
                 const newobj = {id: nanoid(), todo: this.title, completed: false};
                 this.addobj(newobj);
+                this.$refs.info.value = '';
             }
         }
     }
