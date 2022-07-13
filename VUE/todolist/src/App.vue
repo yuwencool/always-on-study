@@ -1,12 +1,24 @@
 <template>
   <div id="app">
-    <user-header :addobj="addobj"/>
+    <div class="titlebox">
+      <span class="title">今日工作计划表</span>
+    </div>
+    <hr/>
+    <div class="headbox">
+      <user-header 
+        :addobj="addobj"
+        style="width: 70%"
+      />
+    </div>
+
     <user-list 
       :todos="todos" 
       :checktodos="checktodos"
       :deletetodo="deletetodo"
     />
-    <user-footer/>
+    <user-footer
+      :todos="todos"
+    />
   </div>
 </template>
 
@@ -49,6 +61,21 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  #app {
+    width: 20%;
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 10px;
+  }
+  .titlebox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .headbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

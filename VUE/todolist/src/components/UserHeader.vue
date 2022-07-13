@@ -1,7 +1,7 @@
 <template>
   <input 
     type="text" 
-    placeholder="请输入要做的事情" 
+    placeholder="请输入要做的事情（按回车录入）" 
     @keyup.enter="add" 
     v-model="title"
     ref="info"

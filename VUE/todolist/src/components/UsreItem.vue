@@ -32,7 +32,7 @@
 <style scoped>
     li {
       display: flex;
-      width: 20%;
+      width: 100%;
       height: 30px;
       /* margin-top: 10px; */
       list-style: none;
@@ -41,12 +41,9 @@
     li:hover {
         background-color: gray;
     }
-    li p {
-      height: 60%;
-    }
     li button {
-      position: absolute;
-      left: 15%;
+      position: relative;
+      margin-left: 70%;
       background-color: red;
       border: none;
       color: white;
