@@ -18,6 +18,9 @@
     />
     <user-footer
       :todos="todos"
+      class="footposition"
+      :clear="clear"
+      :selectAll="selectAll"
     />
   </div>
 </template>
@@ -35,7 +38,7 @@ export default {
         {id: '002', todo: '睡觉', completed: true},
         {id: '003', todo: '学习', completed: false},
         {id: '004', todo: '玩耍', completed: false},
-      ]
+      ],
     }
   },
   components: {
@@ -56,6 +59,21 @@ export default {
     },
     deletetodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
+    },
+    clear() {
+      this.todos = [];
+    },
+    selectAll(condition) {
+      if(condition) {
+        this.todos.forEach((todo) => {
+          todo.completed = true;
+        })
+      }else {
+        this.todos.forEach((todo) => {
+          todo.completed = false;
+        })
+      }
+
     }
   }
 }
@@ -77,5 +95,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  .footposition {
+    margin-left: 6%;
   }
 </style>
