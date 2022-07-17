@@ -6,7 +6,7 @@
     <hr/>
     <div class="headbox">
       <user-header 
-        :addobj="addobj"
+        @addobj="addobj"
         style="width: 70%"
       />
     </div>
@@ -33,12 +33,8 @@ export default {
   name: 'App',
   data() {
     return {
-      todos: [
-        {id: '001', todo: '吃饭', completed: true},
-        {id: '002', todo: '睡觉', completed: true},
-        {id: '003', todo: '学习', completed: false},
-        {id: '004', todo: '玩耍', completed: false},
-      ],
+      // 由于拿到的是字符串，所以必须要解析一下。
+      todos: JSON.parse(localStorage.getItem('todos')) || []
     }
   },
   components: {
@@ -74,6 +70,16 @@ export default {
         })
       }
 
+    }
+  },
+  // 使用watch属性来监视数据的变化，已用于将数据实时存储在localStorage中
+  watch: {
+    todos: {
+      deep: true, // 此处必须开启深度监视，因为监视的是一个对象
+      handler(newValue) {
+        // 此处一定要解析成字符串，因为toString无法将对象解析成正确的字符串样式
+        localStorage.setItem('todos', JSON.stringify(newValue));
+      }
     }
   }
 }

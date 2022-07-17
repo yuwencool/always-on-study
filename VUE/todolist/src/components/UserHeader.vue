@@ -12,7 +12,6 @@
     import {nanoid} from 'nanoid'
     export default {
         name: 'UserHeader',
-        props: ["addobj"],
         data() {
             return {
                 title: ''
@@ -22,7 +21,7 @@
             add () {
                 if (!this.title) return alert("不要输入空值！")
                 const newobj = {id: nanoid(), todo: this.title, completed: false};
-                this.addobj(newobj);
+                this.$emit('addobj', newobj)
                 this.$refs.info.value = '';
             }
         }

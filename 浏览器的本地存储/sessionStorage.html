@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>loaclStorage</title>
+</head>
+<body>
+    <button onclick="setFile()">点我存储文件</button>
+    <button onclick="getFile()">点我读取文件</button>
+    <button onclick="deleteFile()">点我删除文件</button>
+    <button onclick="clearFile()">点我删除所有文件</button>
+    <script type="text/javascript">
+        function setFile() {
+            sessionStorage.setItem('名字', '大花');
+        }
+        function getFile() {
+            const temp = sessionStorage.getItem('名字');
+            console.log(temp);
+        }
+        function deleteFile() {
+            sessionStorage.removeItem('名字');
+        }
+        function clearFile() {
+            sessionStorage.clear();
+        }
+    </script>
+</body>
+</html>
