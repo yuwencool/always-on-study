@@ -46,6 +46,7 @@ export default {
     addobj(x) {
       this.todos.unshift(x);
     },
+    // 勾选事件
     checktodos(id) {
       this.todos.forEach((todo) => {
         if (todo.id === id) {
@@ -53,12 +54,23 @@ export default {
         }
       })
     },
+    // 修改事件
+    updateTodo(id, title) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) {
+          todo.todo = title;
+        }
+      })
+    },
+    // 删除事件
     deletetodo(id) {
       this.todos = this.todos.filter(todo => todo.id !== id);
     },
+    // 清除事件
     clear() {
       this.todos = [];
     },
+    // 全选事件
     selectAll(condition) {
       if(condition) {
         this.todos.forEach((todo) => {
@@ -81,13 +93,16 @@ export default {
         localStorage.setItem('todos', JSON.stringify(newValue));
       }
     }
-  }
+  },
+  mounted() {
+    this.$bus.$on('updateTodo', this.updateTodo);
+  },
 }
 </script>
 
 <style scoped>
   #app {
-    width: 20%;
+    width: 30%;
     border: 1px solid black;
     padding: 5px;
     border-radius: 10px;
