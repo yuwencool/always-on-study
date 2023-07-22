@@ -18,13 +18,13 @@
 
 <script>
   export default {
-    name: 'animaTest',
+    name: "animaTest",
     data() {
       return {
-        isShow: true
-      }
-    }
-  }
+        isShow: true,
+      };
+    },
+  };
 </script>
 
 <style scoped>
@@ -48,10 +48,12 @@
   }
 
   /* 下面是另一种写法 */
-  .test-enter, .test-leave-to {
+  .test-enter,
+  .test-leave-to {
     transform: translateX(-100%);
   }
-  .test-leave, .test-enter-to {
+  .test-leave,
+  .test-enter-to {
     transform: translateX(0px);
   }
 </style>>
